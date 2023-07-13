@@ -1,7 +1,7 @@
 export class player {
     jump = false;
-    run = false;
-    dx = 0;
+    run  = false;
+    dx   = 0;
     angle = 0;
     j=1;
     k=1;
@@ -14,10 +14,11 @@ export class player {
 
     doJump(){
         let y  = Math.cos(this.angle * (Math.PI / 180));
-        y *= 3;
+        y *= 4 ;
+        console.log(y,(this.boxElm.offsetTop - y),this.boxElm.style.top);
         this.boxElm.style.top = (this.boxElm.offsetTop - y) + "px";
         this.angle++;
-        if (this.angle >  180){
+        if (this.angle >  180 ){
             this.jump = false;
             this.angle = 0;
         }
@@ -26,7 +27,7 @@ export class player {
         let x = this.boxElm.offsetLeft + this.dx;
         if ((x + this.boxElm.offsetWidth)> innerWidth) {
             x = innerWidth - this.boxElm.offsetWidth;
-        }else if (x <= -250) x = -250;
+        }else if (x <= 0) x = 0;
         this.boxElm.style.left = `${x}px`;
     }
 

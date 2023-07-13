@@ -12,7 +12,7 @@ body {
 }
 
 #background {
-    width: 90vw;
+    width: 100vw;
     height: 90vh;
     background-image: url('../img/background.jpg');
     background-size: cover;
@@ -28,5 +28,20 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     bottom: 10px;
+    /*right: 10px;*/
     /*top: 0px;*/
+    left: 30px;
+    /*background-color: orangered;*/
+}
+.boxEnemy {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    /* background-image: url('../img/Idle\ \(1\).png'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    bottom: 10px;
+    right: 0px;
+    /*background-color: orangered;*/
+    transform: rotateY(180deg);
 }
