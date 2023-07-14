@@ -6,6 +6,8 @@ export class enemy {
     j=1;
     k=1;
     l=1;
+    offSetX=0;
+    offSetY=0;
     boxElm;
     constructor() {
         this.loadImages();
@@ -13,13 +15,14 @@ export class enemy {
     }
 
     doRun(){
-        if (this.boxElm.offsetLeft==-150 ){
+        if (this.boxElm.offsetLeft<=-150 ){
             this.boxElm.style.left=`${innerWidth}px`;
             console.log(innerWidth);
         }else{
             this.boxElm.style.left=`${this.boxElm.offsetLeft-this.dx}px`;
-            console.log(this.boxElm.offsetLeft);
         }
+        this.offSetX=this.boxElm.offsetLeft;
+        this.offSetY=this.boxElm.offsetTop  ;
     }
 
     drawRun(){

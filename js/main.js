@@ -38,21 +38,42 @@ document.body.addEventListener('keyup', (eventData) => {
 });
 
 setInterval(()=> {
+console.log(enemy1.boxElm.offsetWidth);
+console.log("working");
     if (player1.jump){
         player1.doJump();
     }
     if (player1.run){
         player1.doRun();
     }
+    if (player1.died){
+        // player1.doDie();
+    }
 }, 4);
 setInterval(()=> {
-    if (!player1.jump && !player1.run){
-        player1.drawIdle();
-    }else if (player1.jump){
-        player1.drawJump();
-    }else if (!player1.jump && player1.run){
-        player1.drawRun();
+    if ((((player1.offSetX-enemy1.offSetX)<=(enemy1.boxElm.offsetWidth+player1.boxElm.offsetWidth))&&((player1.offSetX-enemy1.offSetX)>=0))&&
+        (((player1.offSetY-enemy1.offSetY)<=(enemy1.boxElm.offsetWidth+player1.boxElm.offsetWidth))&&((player1.offSetY-enemy1  .offSetY)>=0))){
+        player1.drawDie();
+        enemy1.run=false;
+        enemy1.dx=0;
+        player1.died=true;
+        console.log(player1.offSetX-enemy1.offSetX);
+        console.log(player1.offSetY-enemy1.offSetX);
+    }else {
+        if(player1.died){
+            player1.drawDie();
+            console.log("player 1 m = "+player1.m);
+        }
+        if (!player1.jump && !player1.run && !player1.died){
+            player1.drawIdle();
+        }else if (player1.jump){
+            player1.drawJump();
+        }else if (!player1.jump && player1.run){
+            player1.drawRun();
+        }
     }
+
+
 } , (1000/10));
 
 setInterval(()=>{
@@ -60,7 +81,7 @@ setInterval(()=>{
 },2);
 
 setInterval(()=> {
-    if (true){
+    if (enemy1.run){
         enemy1.drawRun();
     }
 } , (1000/10));
